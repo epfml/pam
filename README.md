@@ -1,5 +1,5 @@
-# Hardware-Efficient Transformer Training via Piecewise Affine Operations
-This is the official code for our [preprint](https://arxiv.org/abs/2305.17190), where we investigate the use of cheap piecewise affine alternatives to common neural network operations such as multiplications for hardware-efficient training.
+# Multiplication-Free Transformer Training via Piecewise Affine Operations
+This is the official code for our [NeurIPS 2023 paper](https://arxiv.org/abs/2305.17190), where we investigate the use of cheap piecewise affine alternatives to common neural network operations such as multiplications for hardware-efficient training.
 The abstract is repeated below:
 
 Multiplications are responsible for most of the computational cost involved in neural network training and inference. Recent research has thus looked for ways to reduce the cost associated with them. Inspired by [Mogami (2020)](https://arxiv.org/abs/2012.03458), we replace multiplication with a cheap piecewise affine approximation that is achieved by adding the bit representation of the floating point numbers together as integers. We show that transformers can be trained with the resulting modified matrix multiplications on both vision and language tasks with little to no performance impact, and without changes to the training hyperparameters. We further replace all non-linearities in the networks making them fully and jointly piecewise affine in both inputs and weights. Finally, we show that we can eliminate all multiplications in the entire training process, including operations in the forward pass, backward pass and optimizer update, demonstrating the first successful training of modern neural network architectures in a fully multiplication-free fashion.
@@ -151,12 +151,13 @@ PYTHONPATH=$PYTHONPATH:$BASE_DIR torchrun --nproc_per_node 1 train.py --output $
 ## Citation
 If you use this work, please consider citing us using the following:
 ```
-@misc{kosson2023hardwareefficient,
-      title={Hardware-Efficient Transformer Training via Piecewise Affine Operations}, 
-      author={Atli Kosson and Martin Jaggi},
-      year={2023},
-      eprint={2305.17190},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{
+kosson2023multiplicationfree,
+title={Multiplication-Free Transformer Training via Piecewise Affine Operations},
+author={Atli Kosson and Martin Jaggi},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+year={2023},
+url={https://openreview.net/forum?id=Vtqymej1tA},
+note={\href{https://arxiv.org/abs/2305.17190}{arXiv:2305.17190}},
 }
 ```
